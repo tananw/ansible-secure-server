@@ -1,4 +1,4 @@
-# Ansible-playbook - securing server with hardened SSH and iptables
+# Ansible-securing server with hardened SSH and iptables
 
 This Ansible playbook is used to create a new, non-root user with sudo access, as well as
 upgrade installed packages and installing some new ones (vim and nmap), copy SSH public key
@@ -16,7 +16,7 @@ ansible-playbook provision.yml
 When you run the playbook for the second time (and so on) be sure to follow instructions in comment in
 file provision.yml, and run the playbook using:
 ```bash
-ansible-playbook provision.yml
+ansible-playbook provision.yml --ask-become-pass
 ```
 
 You can generate your own password with:
