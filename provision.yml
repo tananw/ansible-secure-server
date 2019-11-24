@@ -1,0 +1,24 @@
+---
+- name: Secure server with hardened SSH and iptables.
+
+  hosts: webservers
+
+  # On first run use root, on following ones uncomment become: true and set remote_user to vars/username
+  remote_user: root
+  # become: true
+
+  vars:
+    password: $6$Z.XQWvJoD5EqytLe$.Bth3RhlCxrIQbq9hVjuLrvdqh94Tkuw8JkZXB4k/Ml.LAIIW9l442KeYlq6vy.RizctaBXZQnSKhNYy1aCBJ.
+    public_key: ~/.ssh/id_rsa.pub
+  
+  vars_prompt:
+    - name: "username"
+      prompt: "Enter a name for the new user"
+      private: no
+      confirm: yes
+
+  roles:
+    - user
+    - packages
+    - ssh
+    - iptables
